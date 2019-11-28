@@ -5,9 +5,9 @@ can be found in the LICENSE file at http://angular.io/license
 -->
 
 <h2>Products</h2>
-<div *ngFor="let product of products">
+<div *ngFor="let product of products; index as productId">
   <h3>
-    <a [title]="'Show ' + product.name + ' details'">
+    <a [title]="'Show ' + product.name + ' details'" [routerLink]="['/products', productId]">
       {{ product.name }}
     </a>
   </h3>
@@ -17,4 +17,5 @@ can be found in the LICENSE file at http://angular.io/license
   <button (click)="shareProduct()">
     Share
   </button>
+  <app-product-alerts [product]="product" (notify)="onNotify()"></app-product-alerts>
 </div>
